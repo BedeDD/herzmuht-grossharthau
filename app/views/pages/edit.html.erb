@@ -1,0 +1,21 @@
+<% content_for :title, "Seite '#{@page.nav_name}' bearbeiten".html_safe %>
+
+<div class="row">
+  <div class="col-lg-10 offset-lg-1">
+    <h1>Seite '<%= @page.nav_name %>' bearbeiten</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-10 offset-lg-1">
+    <%= render 'form', page: @page %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-10 offset-lg-1">
+    <%= link_to 'abbrechen', page_path(@page.seo_url) %>
+    <br>
+    <br>
+  </div>
+</div>

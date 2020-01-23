@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= yield(:title) || "HerzMuht Gro&szlig;harthau".html_safe %></title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="keywords" content="'herzmuht grossharthau', 'ausstieg aus milchwirtschaft', tierschutz, grossharthau, sachsen, kuh, kalb, 'artgerechte haltung'">
+    <meta name="description" content="HerzMuht Grossharthau">
+    <meta name="author" content="">
+
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body class="<%= 'no-bg-img' unless current_page?(root_path) || current_page?(home_path) %>">
+    <%= render partial: 'layouts/partials/navigation' %>
+    <!-- flash notices -->
+    <div class="row">
+      <div class="col-sm-8 offset-2">
+        <div id="flash">
+          <% flash.each do |key, value| %>
+            <div class="flash <%= key %>"><%= value %></div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <!-- content -->
+    <section>
+      <div class="container">
+        <%= yield %>
+      </div>
+    </section>
+  </body>
+</html>

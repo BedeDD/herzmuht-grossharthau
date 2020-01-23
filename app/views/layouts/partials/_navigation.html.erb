@@ -1,0 +1,47 @@
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item<%= ' active' if current_page?(root_path) || current_page?(home_path) %>">
+          <a class="nav-link" href="<%= root_path %>">Startseite
+            <% if current_page?(root_path) || current_page?(home_path) %>
+              <span class="sr-only">(aktuell)</span>
+            <% end %>
+          </a>
+        </li>
+        <% Page.all.order(:rank, :seo_url).each do |page| %>
+          <li class="nav-item<%= ' active' if current_page?(page_path(page.seo_url)) %>">
+            <a class="nav-link" href="<%= page_path(page.seo_url) %>"><%= page.nav_name %>
+              <% if current_page?(page_path(page.seo_url)) %>
+                <span class="sr-only">(aktuell)</span>
+              <% end %>
+            </a>
+          </li>
+        <% end %>
+        <li class="nav-item">
+          <% if signed_in? %>
+            <%= link_to sign_out_path, method: :delete, title: "#{current_user.email} abmelden", class: 'nav-link', data: { toggle: 'tooltip', placement: 'bottom' } do %>
+              <i class="fas fa-sign-out-alt"></i>
+            <% end %>
+          <% else %>
+            <%= link_to sign_in_path, title: "anmelden", class: 'nav-link', data: { toggle: 'tooltip', placement: 'bottom' } do %>
+              <i class="fas fa-sign-in-alt"></i>
+            <% end %>
+          <% end %>
+        </li>
+        <% if signed_in? %>
+          <li class="nav-item">
+            <%= link_to new_page_path, title: "Neue Seite erstellen", class: 'nav-link', data: { toggle: 'tooltip', placement: 'bottom' } do %>
+              <i class="far fa-plus-square"></i>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,15 @@
+<% content_for :title, @page.title if @page.present? %>
+<div class="row">
+  <div class="col-sm-2 offset-10">
+    <%= link_to edit_page_path(@page.seo_url), class: 'btn btn-link' do %>
+      <%= fa_icon "far edit", text: "Bearbeiten", class: 'mx-2', size: '1x' %>
+    <% end if @page.present? %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-6 offset-lg-3">
+    <h1><%= @page.heading if @page.present? %></h1>
+    <br>
+    <%= @page.body if @page.present? %>
+  </div>
+</div>

@@ -1,0 +1,48 @@
+html{
+  min-height:100%;/* make sure it is at least as tall as the viewport */
+  position:relative;
+}
+
+body {
+  height:100%; /* force the BODY element to match the height of the HTML element */
+  background: #DED76F url("../../assets/images/background.jpeg") no-repeat center center fixed !important;
+  // background: #DED76F no-repeat center center fixed;
+  -webkit-background-size: contain !important;;
+  -moz-background-size: contain !important;;
+  background-size: contain !important;;
+  -o-background-size: contain !important;;
+}
+
+body.no-bg-img {
+  background: #DED76F !important;
+}
+
+nav {
+  background: #72532B !important;
+}
+
+section > div.container {
+  padding-top: 3rem !important;
+}
+
+img {
+  max-height: 40rem !important;
+  max-width: 40rem !important;
+}
+
+.fit-image{
+  width: 100%;
+  object-fit: cover !important;
+}
+
+.text-bold {
+  font-weight: bold !important;
+}
+
+.text-hint {
+  font-size: 0.5rem !important;
+}
+
+.attachment__caption {
+  display: none !important;
+}
